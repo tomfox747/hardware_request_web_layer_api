@@ -1,6 +1,6 @@
-const httpService = require('../services/httpService');
-const get = httpService.get();
-const post = httpService.post();
+const httpService = require('./httpService');
+const get = httpService.get;
+const post = httpService.post;
 
 const post_building_data = async () =>{
     const response = await post('http://localhost:7071/inner/data/post_building_data');

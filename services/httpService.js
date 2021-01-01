@@ -1,32 +1,32 @@
-const http = require('http');
+var request = require('request');
 
-const getRequest = (url, params, body) =>{
+const postRequest = ((url,params,body) =>{
     return new Promise((resolve, reject) =>{
-        http.get(url, (res) =>{
-            res.setEncoding('utf8');
-            res.on('data', (data) =>{
-                resolve(data);
-            })
-            res.on('error', (err) =>{
-                reject(err);
-            })
-        })
+        request.post(
+            url,
+            function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    resolve(body);
+                }
+                reject('error');
+            }
+        );
     })
-}
+})
 
-const postRequest = (url, params, data) =>{
+const getRequest = ((url,params,body) =>{
     return new Promise((resolve, reject) =>{
-        http.request(url, (res) =>{
-            res.setEncoding('utf8');
-            res.on('data', (data) =>{
-                resolve(data);
-            })
-            res.on('error',(err) =>{
-                reject(err);
-            })
-        })
+        request.get(
+            url,
+            function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    resolve(body);
+                }
+                reject('error');
+            }
+        );
     })
-}
+})
 
 module.exports = {
     get: getRequest,
