@@ -16,7 +16,7 @@ const getRequest = (url, params, body) =>{
 
 const postRequest = (url, params, data) =>{
     return new Promise((resolve, reject) =>{
-        http.post(url, (res) =>{
+        http.request(url, (res) =>{
             res.setEncoding('utf8');
             res.on('data', (data) =>{
                 resolve(data);

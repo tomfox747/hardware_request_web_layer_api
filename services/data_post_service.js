@@ -1,17 +1,19 @@
 const httpService = require('../services/httpService');
+const get = httpService.get();
+const post = httpService.post();
 
 const post_building_data = async () =>{
-    const response = await httpService.post('http://localhost:7071/inner/data/post_building_data');
+    const response = await post('http://localhost:7071/inner/data/post_building_data');
     return response;
 }
 
 const post_room_data = async () =>{
-    const response = await httpService.post('http://localhost:7071/inner/data/post_room_data');
+    const response = await post('http://localhost:7071/inner/data/post_room_data');
     return response;
 }
 
 const post_sensor_data = async () =>{
-    const response = await httpService.post('http://localhost:7071/inner/data/post_sensor_data');
+    const response = await post('http://localhost:7071/inner/data/post_sensor_data');
     return response;
 }
 
