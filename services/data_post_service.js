@@ -1,20 +1,35 @@
 const httpService = require('./httpService');
 const get = httpService.get;
 const post = httpService.post;
+const {getError} = require('../utilities/errorHandler');
+const fileName = 'data_post_service';
 
 const post_building_data = async () =>{
-    const response = await post('http://localhost:7071/inner/data/post_building_data');
-    return response;
+    try{
+        const response = await post('http://localhost:7071/inner/data/post_building_data');
+        return response;
+    }catch(e){
+        return getError(e,e.code, fileName, 'post_building_data');
+    }
 }
 
 const post_room_data = async () =>{
-    const response = await post('http://localhost:7071/inner/data/post_room_data');
-    return response;
+    try{
+        const response = await post('http://localhost:7071/inner/data/post_room_data');
+        return response;
+    }catch(e){
+        return getError(e,e.code, fileName, 'post_room_data');
+    }
 }
 
 const post_sensor_data = async () =>{
-    const response = await post('http://localhost:7071/inner/data/post_sensor_data');
-    return response;
+    try{
+        const response = await post('http://localhost:7071/inner/data/post_sensor_data');
+        return response;
+    }catch(e){
+        return getError(e,e.code, fileName, 'post_sensor_data');
+    }
+    
 }
 
 module.exports = {
