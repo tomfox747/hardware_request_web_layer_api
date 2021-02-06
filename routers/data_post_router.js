@@ -6,9 +6,11 @@ const fileName = 'data_post_router';
 
 router.post('/post_building_data', async (req,res) =>{
     try{
-        const response = await data_post_service.Post_building_data();
+        let buildingObj = req.body
+        const response = await data_post_service.Post_building_data(buildingObj);
         res.send(response);
     }catch(e){
+        console.log(e)
         const err = customError(e,e.code, fileName, 'post_building_data');
         const returnError = generateReturnError(err);
         res.send(returnError);
@@ -17,7 +19,8 @@ router.post('/post_building_data', async (req,res) =>{
 
 router.post('/post_room_data', async (req,res) =>{
     try{
-        const response = await data_post_service.Post_room_data();
+        let roomObj = req.body
+        const response = await data_post_service.Post_room_data(roomObj);
         res.send(response);
     }catch(e){
         const err = customError(e,e.code, fileName, 'post_room_data');
@@ -28,8 +31,9 @@ router.post('/post_room_data', async (req,res) =>{
 
 router.post('/post_sensor_data', async (req,res) =>{
     try{
-        const response = await data_post_service.Post_sensor_data();
-        res.send(response);    
+        let sensorObj = req.body
+        const response = await data_post_service.Post_sensor_data(sensorObj);
+        res.send(response);
     }catch(e){
         const err = customError(e,e.code,fileName,'post_sensor_data');
         const returnError = generateReturnError(err);
