@@ -41,4 +41,30 @@ router.post('/post_sensor_data', async (req,res) =>{
     }
 })
 
+router.post('/increment_room_population', async (req,res) =>{
+    try{
+        let buildingId = req.body.buildingId
+        let roomId = req.body.roomId
+        const response = await data_post_service.Increment_room_population(buildingId, roomId)
+        res.send(response)
+    }catch(e){
+        const err = customError(e,e.code,fileName,'increment_room_population')
+        const returnError = generateReturnError(err)
+        res.send(returnError)
+    }
+})
+
+router.post('/decrement_room_population', async (req,res) =>{
+    try{
+        let buildingId = req.body.buildingId
+        let roomId = req.body.roomId
+        const response = await data_post_service.Decrement_room_population(buildingId, roomId)
+        res.send(response)
+    }catch(e){
+        const err = customError(e,e.code,fileName,'decrement_room_population')
+        const returnError = generateReturnError(err)
+        res.send(returnError)
+    }
+})
+
 module.exports = router;
