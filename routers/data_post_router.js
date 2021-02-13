@@ -48,6 +48,7 @@ router.post('/increment_room_population', async (req,res) =>{
         const response = await data_post_service.Increment_room_population(buildingId, roomId)
         res.send(response)
     }catch(e){
+        console.log(e)
         const err = customError(e,e.code,fileName,'increment_room_population')
         const returnError = generateReturnError(err)
         res.send(returnError)
