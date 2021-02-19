@@ -71,6 +71,6 @@ const GenerateReturnError = (e) =>{
 }
 
 module.exports = {
-    customError:GetError,
+    getError:GetError,
     generateReturnError: GenerateReturnError
 };
